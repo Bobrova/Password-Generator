@@ -14,7 +14,6 @@
         wordLength = validateLength(wordLength);
         numbersCount = validateNumbers(numbersCount,wordLength);
         
-
         while (count < wordLength-numbersCount)
         {
           if (letter === 0){
@@ -35,27 +34,27 @@
         return result;
     }
 
-        function randomInteger(min, max) {
-          var rand = min + Math.random() * (max + 1 - min);
-          rand = Math.floor(rand);
-          return rand;
-        }
+    function randomInteger(min, max) {
+        var rand = min + Math.random() * (max + 1 - min);
+        rand = Math.floor(rand);
+        return rand;
+    }
 
-        function validateNumbers(nCount,wLength){
-          if (nCount>0 && nCount<10 && nCount < wLength){ return nCount; }
-          else {
-            withNumbers = false;
-            return 0;
-          }
+    function validateNumbers(nCount,wLength){
+        if (nCount>0 && nCount<10 && nCount < wLength){ return nCount; }
+        else {
+          withNumbers = false;
+          return 0;
         }
+    }
 
-        function validateLength(length){
-          if ( length > 3 || length < 50){
-            return length;
-          }
-          else return 6;
+    function validateLength(length){
+        if ( length > 3 || length < 50){
+          return length;
         }
-
+        else return 6;
+    }
+    // commonjs
     if (typeof exports === 'object') {
         module.exports = generatePassword;
     }
