@@ -1,9 +1,10 @@
 (function(){
     "use strict";
 
-    function generate (wordLength,numbersCount) {
+    var withNumbers = true;
 
-        var withNumbers = true;
+    function generatePassword (wordLength,numbersCount) {
+
         var vowels = ['e','y','u','i','o','a'];
         var consonants = ['q','w','r','t','p','s','d','f','g','h','j','k','l','z','x','c','v','b','n','m'];
         var count = 0;
@@ -41,34 +42,33 @@
         }
 
         function validateNumbers(nCount,wLength){
-          if (nCount === undefined || nCount === 0){
+          if (nCount>0 && nCount<10 && nCount < wLength){ return nCount; }
+          else {
             withNumbers = false;
             return 0;
           }
-          else if (nCount>0 && nCount<10 && nCount < wLength){ return nCount; }
-            else return 2;
         }
 
         function validateLength(length){
-          if (length === undefined || length === 0 || length < 3 || length > 50){
-            return 6;
+          if ( length > 3 || length < 50){
+            return length;
           }
-          else return length;
+          else return 6;
         }
 
     if (typeof exports === 'object') {
-        module.exports = generate;
+        module.exports = generatePassword;
     }
 
     // AMD module
     else if (typeof define === 'function' && define.amd) {
         define(function() {
-            return generate;
+            return generatePassword;
         });
     }
 
     // Browser global
     else {
-        window.generate = generate;
+        window.generatePassword = generatePassword;
     }
 })();
